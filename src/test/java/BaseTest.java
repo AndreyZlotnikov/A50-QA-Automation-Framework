@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import java.time.Duration;
 
@@ -20,12 +21,15 @@ public class BaseTest {
     protected WebDriver driver = null;
     protected String url = "https://qa.koel.app/";
     @BeforeMethod
-    public void setupDriver() {
+    @Parameters({"BaseURL"})
+    public void setupDriver(String BaseURL) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--disable-notifications");
         driver = new ChromeDriver(options);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        url = BaseURL;
         driver.get(url); //open page
     }
 
@@ -106,6 +110,17 @@ public class BaseTest {
         WebElement successBanner = driver.findElement(By.cssSelector("div[class='success show']"));
         Assert.assertTrue(successBanner.isDisplayed());
 
+    }
+
+    public void deleteSelectedPlaylist (String playlistName) throws InterruptedException {
+        WebElement playlist = driver.findElement(By.xpath("//a[contains(text(), '" + playlistName + "')]"));
+        playlist.click();
+        Thread.sleep(2000);
+        WebElement deletePlaylistBtn = driver.findElement(By.cssSelector("[class='del btn-delete-playlist']"));
+        deletePlaylistBtn.click();
+        Thread.sleep(2000);
+        WebElement successBanner = driver.findElement(By.xpath("//div[contains(text(), 'Deleted playlist')]"));
+        Assert.assertTrue(successBanner.isDisplayed());
     }
 
 }
