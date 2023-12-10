@@ -102,42 +102,56 @@ public class BaseTest {
     }
 
     public void selectSong (String title) {
-        WebElement song = driver.findElement(By.xpath("//td[contains(text(), '" + title + "')]"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement song = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[contains(text(), '" + title + "')]")));
+                //driver.findElement(By.xpath("//td[contains(text(), '" + title + "')]"));
         song.click();
     }
 
 
     public void playSelectedSong (String title) throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Actions actions = new Actions(driver);
-        WebElement song = driver.findElement(By.xpath("//td[contains(text(), '" + title + "')]"));
+        WebElement song = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[contains(text(), '" + title + "')]")));
+                //driver.findElement(By.xpath("//td[contains(text(), '" + title + "')]"));
         actions.doubleClick(song).perform();
-        WebElement pauseBtn = driver.findElement(By.cssSelector("span[data-testid='pause-btn']"));
+        WebElement pauseBtn = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("span[data-testid='pause-btn']")));
+                //driver.findElement(By.cssSelector("span[data-testid='pause-btn']"));
         actions.moveToElement(pauseBtn).perform();
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
         Assert.assertTrue(pauseBtn.isDisplayed());
-        WebElement bannerOfPlayingSong = driver.findElement(By.xpath("//h3[contains(text(), '" + title + "')]"));
+        WebElement bannerOfPlayingSong = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3[contains(text(), '" + title + "')]")));
+                //driver.findElement(By.xpath("//h3[contains(text(), '" + title + "')]"));
         String titleOfPlayingSong = bannerOfPlayingSong.getText();
         Assert.assertEquals(titleOfPlayingSong, title);
     }
 
     public void addSongToSelectedPlaylist  (String playlistName) throws InterruptedException {
-        WebElement addToBtn = driver.findElement(By.cssSelector("button[class='btn-add-to']"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement addToBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='btn-add-to']")));
+                //driver.findElement(By.cssSelector("button[class='btn-add-to']"));
         addToBtn.click();
-        WebElement playlist = driver.findElement(By.xpath("//li[contains(text(), '" + playlistName + "')]"));
+        WebElement playlist = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(text(), '" + playlistName + "')]")));
+                //driver.findElement(By.xpath("//li[contains(text(), '" + playlistName + "')]"));
         playlist.click();
-        WebElement successBanner = driver.findElement(By.cssSelector("div[class='success show']"));
+        WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='success show']")));
+                //driver.findElement(By.cssSelector("div[class='success show']"));
         Assert.assertTrue(successBanner.isDisplayed());
 
     }
 
     public void deleteSelectedPlaylist (String playlistName) throws InterruptedException {
-        WebElement playlist = driver.findElement(By.xpath("//a[contains(text(), '" + playlistName + "')]"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement playlist = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), '" + playlistName + "')]")));
+                //driver.findElement(By.xpath("//a[contains(text(), '" + playlistName + "')]"));
         playlist.click();
-        Thread.sleep(2000);
-        WebElement deletePlaylistBtn = driver.findElement(By.cssSelector("[class='del btn-delete-playlist']"));
+        //Thread.sleep(2000);
+        WebElement deletePlaylistBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[class='del btn-delete-playlist']")));
+                //driver.findElement(By.cssSelector("[class='del btn-delete-playlist']"));
         deletePlaylistBtn.click();
-        Thread.sleep(2000);
-        WebElement successBanner = driver.findElement(By.xpath("//div[contains(text(), 'Deleted playlist')]"));
+        //Thread.sleep(2000);
+        WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Deleted playlist')]")));
+                //driver.findElement(By.xpath("//div[contains(text(), 'Deleted playlist')]"));
         Assert.assertTrue(successBanner.isDisplayed());
     }
 
