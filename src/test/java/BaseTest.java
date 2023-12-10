@@ -84,15 +84,20 @@ public class BaseTest {
     }
 
     public void createPlaylist (String name) {
-        WebElement createNewPlaylistDtn = driver.findElement(By.cssSelector("[data-testid='sidebar-create-playlist-btn']"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement createNewPlaylistDtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[data-testid='sidebar-create-playlist-btn']")));
+                //driver.findElement(By.cssSelector("[data-testid='sidebar-create-playlist-btn']"));
         createNewPlaylistDtn.click();
-        WebElement newPlaylistContextMenuBtn = driver.findElement(By.cssSelector("[data-testid='playlist-context-menu-create-simple']"));
+        WebElement newPlaylistContextMenuBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")));
+                //driver.findElement(By.cssSelector("[data-testid='playlist-context-menu-create-simple']"));
         newPlaylistContextMenuBtn.click();
-        WebElement newPlaylistNameField = driver.findElement(By.cssSelector("input[name='name']"));
+        WebElement newPlaylistNameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[name='name']")));
+                //driver.findElement(By.cssSelector("input[name='name']"));
         newPlaylistNameField.clear();
         newPlaylistNameField.sendKeys(name);
         newPlaylistNameField.sendKeys(Keys.ENTER);
-        WebElement successBanner = driver.findElement(By.cssSelector("div[ class='success show']"));
+        WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[ class='success show']")));
+                //driver.findElement(By.cssSelector("div[ class='success show']"));
         Assert.assertTrue(successBanner.isDisplayed());
     }
 
