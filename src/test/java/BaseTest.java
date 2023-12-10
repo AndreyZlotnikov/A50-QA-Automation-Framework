@@ -6,12 +6,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
+
 
 import java.time.Duration;
 
@@ -31,7 +34,7 @@ public class BaseTest {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
-        Object wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         url = BaseURL;
         driver.get(url); //open page
     }
@@ -51,26 +54,32 @@ public class BaseTest {
     }
 
     public void logIn (String email, String password) {
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
-                driver.findElement(By.cssSelector("input[type='email']"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement emailField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[type='email']")));
+                //driver.findElement(By.cssSelector("input[type='email']"));
         emailField.click();
         emailField.clear();
         emailField.sendKeys(email);
 
-        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
+        WebElement passwordField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[type='password']")));
+                //driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.click();
         passwordField.clear();
         passwordField.sendKeys(password);
 
-        WebElement logInBtn = driver.findElement(By.cssSelector("button[type='submit']"));
+        WebElement logInBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[type='submit']")));
+                //driver.findElement(By.cssSelector("button[type='submit']"));
         logInBtn.click();
 
     }
 
     public void goToAllSongs () {
-        WebElement allSongsBtn = driver.findElement(By.cssSelector("a[class='songs']"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement allSongsBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[class='songs']")));
+                //driver.findElement(By.cssSelector("a[class='songs']"));
         allSongsBtn.click();
-        WebElement allSongsHeading = driver.findElement(By.xpath("//h1[contains(text(), 'All Songs')]"));
+        WebElement allSongsHeading = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(), 'All Songs')]")));
+                //driver.findElement(By.xpath("//h1[contains(text(), 'All Songs')]"));
         Assert.assertTrue(allSongsHeading.isDisplayed());
     }
 
