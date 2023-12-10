@@ -9,14 +9,14 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class Homework17 extends BaseTest {
-
     @Test
     public void addSongToPlaylist() throws InterruptedException {
-    logIn("demo@class.com", "te$t$tudent");
-    createPlaylist("Playlist25");
-    goToAllSongs();
-    selectSong("BornKing");
-    addSongToSelectedPlaylist("Playlist25");
+        logIn("demo@class.com", "te$t$tudent");
+        createPlaylist("Playlist25");
+        goToAllSongs();
+        selectSong("BornKing");
+        addSongToSelectedPlaylist("Playlist25");
 
     }
+
 }
