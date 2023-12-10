@@ -52,6 +52,7 @@ public class BaseTest {
 
     public void logIn (String email, String password) {
         WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+                driver.findElement(By.cssSelector("input[type='email']"));
         emailField.click();
         emailField.clear();
         emailField.sendKeys(email);
