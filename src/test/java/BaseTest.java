@@ -158,7 +158,7 @@ public class BaseTest {
         actions.contextClick(playlist).perform();
         WebElement editBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//nav[@class='menu playlist-item-menu']//li[contains(text(), 'Edit')]")));
         editBtn.click();
-        WebElement enterPlaylistNameField = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("input[data-testid='inline-playlist-name-input']")));
+        WebElement enterPlaylistNameField = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("//input[@data-testid ='inline-playlist-name-input']")));
         enterPlaylistNameField.clear();
         enterPlaylistNameField.sendKeys(newPlaylistName);
         enterPlaylistNameField.sendKeys(Keys.ENTER);
