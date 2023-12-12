@@ -143,15 +143,10 @@ public class BaseTest {
     public void deleteSelectedPlaylist (String playlistName) throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement playlist = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), '" + playlistName + "')]")));
-                //driver.findElement(By.xpath("//a[contains(text(), '" + playlistName + "')]"));
         playlist.click();
-        //Thread.sleep(2000);
         WebElement deletePlaylistBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[class='del btn-delete-playlist']")));
-                //driver.findElement(By.cssSelector("[class='del btn-delete-playlist']"));
         deletePlaylistBtn.click();
-        //Thread.sleep(2000);
         WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Deleted playlist')]")));
-                //driver.findElement(By.xpath("//div[contains(text(), 'Deleted playlist')]"));
         Assert.assertTrue(successBanner.isDisplayed());
     }
 
