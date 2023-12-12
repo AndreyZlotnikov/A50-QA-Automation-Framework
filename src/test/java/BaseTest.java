@@ -150,4 +150,13 @@ public class BaseTest {
         Assert.assertTrue(successBanner.isDisplayed());
     }
 
+    public void renameSelectedPlaylist(String editablePlaylistName, String newPlaylistName) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Actions actions = new Actions(driver);
+        WebElement playlist = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), '" + editablePlaylistName + "')]")));
+        playlist.click();
+        actions.contextClick(playlist).perform();
+        WebElement editBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector()));
+    }
+
 }
