@@ -156,7 +156,15 @@ public class BaseTest {
         WebElement playlist = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), '" + editablePlaylistName + "')]")));
         playlist.click();
         actions.contextClick(playlist).perform();
-        WebElement editBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector()));
+        WebElement editBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//nav[@class='menu playlist-item-menu']//li[contains(text(), 'Edit')]")));
+        editBtn.click();
+        WebElement enterPlaylistNameField = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("input[data-testid='inline-playlist-name-input']")));
+        enterPlaylistNameField.clear();
+        enterPlaylistNameField.sendKeys(newPlaylistName);
+        enterPlaylistNameField.sendKeys(Keys.ENTER);
+        WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Updated playlist')]")));
+        Assert.assertTrue(successBanner.isDisplayed());
     }
+
 
 }
