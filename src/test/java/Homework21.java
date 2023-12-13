@@ -4,8 +4,8 @@ public class Homework21 extends BaseTest {
 
     @Test
     public void renamePlaylist() {
-        logIn("andrey.zlotnikov@testpro.io", "Man07hat01tan26!");
-        createPlaylist("Playlist25");
-        renameSelectedPlaylist("Playlist25", "Playlist106");
+        logIn("demo@class.com", "te$t$tudent");
+        createPlaylist("Playlist7");
+        renameSelectedPlaylist("Playlist7", "Playlist511");
     }
 }
