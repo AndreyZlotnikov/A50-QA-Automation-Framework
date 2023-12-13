@@ -16,6 +16,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
 
+import java.lang.ref.Cleaner;
 import java.time.Duration;
 
 import static java.lang.Thread.sleep;
@@ -148,6 +149,33 @@ public class BaseTest {
         deletePlaylistBtn.click();
         WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Deleted playlist')]")));
         Assert.assertTrue(successBanner.isDisplayed());
+    }
+
+    public void renameSelectedPlaylist(String editablePlaylistName, String newPlaylistName) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Actions actions = new Actions(driver);
+        WebElement playlist = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), '" + editablePlaylistName + "')]")));
+        actions.contextClick(playlist).perform();
+        WebElement editBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//nav[@class='menu playlist-item-menu']//li[contains(text(), 'Edit')]")));
+        editBtn.click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@data-testid='inline-playlist-name-input']")));
+        WebElement enterPlaylistNameField = driver.findElement(By.xpath("//input[@data-testid='inline-playlist-name-input']"));
+        actions.moveToElement(enterPlaylistNameField)
+                .doubleClick()
+                .sendKeys(Keys.DELETE)
+                .sendKeys(newPlaylistName)
+                .sendKeys(Keys.ENTER)
+                .build().perform();
+        WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Updated playlist')]")));
+        Assert.assertTrue(successBanner.isDisplayed());
+    }
+
+    public void goToProfilePage () {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement viewEditUserProfileBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[class='avatar']")));
+        viewEditUserProfileBtn.click();
+        WebElement pageTitle = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[contains(text(), 'Profile & Preferences')]")));
+        Assert.assertTrue(pageTitle.isDisplayed());
     }
 
 }
