@@ -170,5 +170,12 @@ public class BaseTest {
         Assert.assertTrue(successBanner.isDisplayed());
     }
 
+    public void goToProfilePage () {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement viewEditUserProfileBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[class='avatar']")));
+        viewEditUserProfileBtn.click();
+        WebElement pageTitle = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[contains(text(), 'Profile & Preferences')]")));
+        Assert.assertTrue(pageTitle.isDisplayed());
+    }
 
 }
