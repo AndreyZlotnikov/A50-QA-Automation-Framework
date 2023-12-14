@@ -202,7 +202,7 @@ public class BaseTest {
         emailAddressField.sendKeys(email);
     }
 
-    public void fillInNewPasswordField (String newPassword) {
+    public void fillInNewPasswordField   (String newPassword) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement newPasswordField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[id='inputProfileNewPassword']")));
         newPasswordField.click();
@@ -220,7 +220,6 @@ public class BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement successBunner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Profile updated')]")));
         Assert.assertTrue(successBunner.isDisplayed());
-        //WebElement avatarName = wait
 
     }
 }
