@@ -12,7 +12,8 @@ import java.time.Duration;
 public class ProfilePage extends BasePage {
 
     public ProfilePage (WebDriver givenDriver) {
-    super(givenDriver);
+
+        super(givenDriver);
 }
     public void goToProfilePage () {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
