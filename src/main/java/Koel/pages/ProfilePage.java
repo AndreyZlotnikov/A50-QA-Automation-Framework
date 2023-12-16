@@ -1,4 +1,4 @@
-package pages;
+package Koel.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +19,7 @@ public class ProfilePage extends BasePage {
         WebElement viewEditUserProfileBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[class='avatar']")));
         viewEditUserProfileBtn.click();
         WebElement pageTitle = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[contains(text(), 'Profile & Preferences')]")));
-        Assert.assertTrue(pageTitle.isDisplayed());
+        //Assert.assertTrue(pageTitle.isDisplayed());
     }
 
     public void fillInCurrentPasswordField (String currentPassword) {

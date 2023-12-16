@@ -1,14 +1,12 @@
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.Test;
-import pages.AllSongsPage;
-import pages.BasePage;
-import pages.LoginPage;
-import pages.PlaylistsPage;
+package Koel;
 
-public class Homework17 extends BasePage {
-    public Homework17(WebDriver givenDriver) {
-        super(givenDriver);
-    }
+import org.testng.annotations.Test;
+import Koel.pages.AllSongsPage;
+import Koel.pages.LoginPage;
+import Koel.pages.PlaylistsPage;
+
+public class Homework17 extends BaseTest {
+
 
     @Test
     public void addSongToPlaylist() {

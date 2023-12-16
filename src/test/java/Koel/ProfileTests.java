@@ -1,14 +1,14 @@
+package Koel;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.LoginPage;
-import pages.ProfilePage;
+import Koel.pages.BasePage;
+import Koel.pages.LoginPage;
+import Koel.pages.ProfilePage;
 
-public class ProfileTests extends BasePage {
+public class ProfileTests extends BaseTest {
 
-    public ProfileTests(WebDriver givenDriver) {
-        super(givenDriver);
-    }
+
 
     @Test
     public void renameUserName() {

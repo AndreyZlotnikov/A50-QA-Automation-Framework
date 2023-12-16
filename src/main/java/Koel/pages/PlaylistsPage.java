@@ -1,4 +1,4 @@
-package pages;
+package Koel.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+
 
 import java.time.Duration;
 
@@ -31,7 +31,7 @@ public class PlaylistsPage extends BasePage {
         newPlaylistNameField.sendKeys(Keys.ENTER);
         WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[ class='success show']")));
         //driver.findElement(By.cssSelector("div[ class='success show']"));
-        Assert.assertTrue(successBanner.isDisplayed());
+        //Assert.assertTrue(successBanner.isDisplayed());
     }
 
     public void addSongToSelectedPlaylist  (String playlistName) {
@@ -44,7 +44,7 @@ public class PlaylistsPage extends BasePage {
         playlist.click();
         WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='success show']")));
         //driver.findElement(By.cssSelector("div[class='success show']"));
-        Assert.assertTrue(successBanner.isDisplayed());
+        //Assert.assertTrue(successBanner.isDisplayed());
 
     }
 
@@ -55,7 +55,7 @@ public class PlaylistsPage extends BasePage {
         WebElement deletePlaylistBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[class='del btn-delete-playlist']")));
         deletePlaylistBtn.click();
         WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Deleted playlist')]")));
-        Assert.assertTrue(successBanner.isDisplayed());
+        //Assert.assertTrue(successBanner.isDisplayed());
     }
 
     public void renameSelectedPlaylist(String editablePlaylistName, String newPlaylistName) {
@@ -74,6 +74,6 @@ public class PlaylistsPage extends BasePage {
                 .sendKeys(Keys.ENTER)
                 .build().perform();
         WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Updated playlist')]")));
-        Assert.assertTrue(successBanner.isDisplayed());
+        //Assert.assertTrue(successBanner.isDisplayed());
     }
 }

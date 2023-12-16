@@ -1,14 +1,12 @@
-import org.openqa.selenium.WebDriver;
+package Koel;
+
 import org.testng.annotations.Test;
-import pages.AllSongsPage;
-import pages.BasePage;
-import pages.LoginPage;
+import Koel.pages.AllSongsPage;
+import Koel.pages.LoginPage;
 
-public class Homework18 extends BasePage {
+public class Homework18 extends BaseTest {
 
-    public Homework18(WebDriver givenDriver) {
-        super(givenDriver);
-    }
+
 
     @Test
     public void playSong() throws InterruptedException {

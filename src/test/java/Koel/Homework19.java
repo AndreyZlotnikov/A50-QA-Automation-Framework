@@ -1,14 +1,12 @@
-import org.openqa.selenium.WebDriver;
+package Koel;
+
 import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.LoginPage;
-import pages.PlaylistsPage;
+import Koel.pages.LoginPage;
+import Koel.pages.PlaylistsPage;
 
-public class Homework19 extends BasePage {
+public class Homework19 extends BaseTest {
 
-    public Homework19(WebDriver givenDriver) {
-        super(givenDriver);
-    }
+
 
     @Test
     public void deletePlaylist () throws InterruptedException {

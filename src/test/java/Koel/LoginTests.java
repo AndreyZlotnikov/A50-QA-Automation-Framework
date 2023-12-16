@@ -1,16 +1,16 @@
+package Koel;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.BasePage;
+import Koel.pages.BasePage;
 
 import java.time.Duration;
 
-public class LoginTests extends BasePage {
-    public LoginTests(WebDriver driver) {
-        super(driver);
-    }
+public class LoginTests extends BaseTest {
+
 
     @Test
     public void loginEmptyEmailPassword() {

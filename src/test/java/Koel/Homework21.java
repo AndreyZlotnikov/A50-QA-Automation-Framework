@@ -1,14 +1,12 @@
-import org.openqa.selenium.WebDriver;
+package Koel;
+
 import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.LoginPage;
-import pages.PlaylistsPage;
+import Koel.pages.LoginPage;
+import Koel.pages.PlaylistsPage;
 
-public class Homework21 extends BasePage {
+public class Homework21 extends BaseTest {
 
-    public Homework21(WebDriver givenDriver) {
-        super(givenDriver);
-    }
+
 
     @Test
     public void renamePlaylist() {
