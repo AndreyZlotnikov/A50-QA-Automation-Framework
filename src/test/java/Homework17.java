@@ -1,21 +1,26 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.AllSongsPage;
+import pages.BasePage;
+import pages.LoginPage;
+import pages.PlaylistsPage;
 
-import java.time.Duration;
+public class Homework17 extends BasePage {
+    public Homework17(WebDriver givenDriver) {
+        super(givenDriver);
+    }
 
-public class Homework17 extends BaseTest {
     @Test
-    public void addSongToPlaylist() throws InterruptedException {
-        logIn("demo@class.com", "te$t$tudent");
-        createPlaylist("Playlist25");
-        goToAllSongs();
-        selectSong("BornKing");
-        addSongToSelectedPlaylist("Playlist25");
+    public void addSongToPlaylist() {
+        LoginPage loginPage = new LoginPage(driver);
+        PlaylistsPage playlistsPage = new PlaylistsPage(driver);
+        AllSongsPage allSongsPage = new AllSongsPage(driver);
+
+        loginPage.logIn("demo@class.com", "te$t$tudent");
+        playlistsPage.createPlaylist("Playlist25");
+        allSongsPage.goToAllSongs();
+        allSongsPage.selectSong("BornKing");
+        playlistsPage.addSongToSelectedPlaylist("Playlist25");
 
     }
 

@@ -5,10 +5,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.BasePage;
 
 import java.time.Duration;
 
-public class Homework16 extends BaseTest {
+public class Homework16 extends BasePage {
+
+    public Homework16(WebDriver givenDriver) {
+        super(givenDriver);
+    }
 
     @Test
     public void registrationNavigation() {

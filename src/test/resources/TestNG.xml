@@ -6,14 +6,21 @@
     <test name="Example Test" preserve-order="false">
         <classes>
             <class name="LoginTests"/>
-            <class name="BaseTest"/>
+            <class name="ProfileTests"/>
+            <class name="pages.BasePage"/>
+            <class name="pages.HomePage"/>
+            <class name="pages.LoginPage"/>
+            <class name="pages.AllSongsPage"/>
+            <class name="pages.PlaylistsPage"/>
+            <class name="pages.ProfilePage"/>
             <class name="Homework18"/>
             <class name="Homework16"/>
             <class name="Homework17"/>
             <class name="Homework19"/>
             <class name="Homework20"/>
             <class name="Homework21"/>
-            <class name="ProfileTests"/>
+            <class name="Homework22"/>
+
         </classes>
     </test>
 </suite>
