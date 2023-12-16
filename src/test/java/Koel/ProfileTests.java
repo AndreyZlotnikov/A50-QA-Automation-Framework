@@ -1,8 +1,6 @@
 package Koel;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-import Koel.pages.BasePage;
 import Koel.pages.LoginPage;
 import Koel.pages.ProfilePage;
 
