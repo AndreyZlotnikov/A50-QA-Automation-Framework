@@ -5,15 +5,15 @@
     <parameter name="BaseURL" value="https://qa.koel.app/"/>
     <test name="Example Test" preserve-order="false">
         <classes>
-            <class name="Koel.LoginTests"/>
-            <class name="Koel.ProfileTests"/>
-            <class name="Koel.Homework18"/>
-            <class name="Koel.Homework16"/>
-            <class name="Koel.Homework17"/>
-            <class name="Koel.Homework19"/>
-            <class name="Koel.Homework20"/>
-            <class name="Koel.Homework21"/>
-            <class name="Koel.Homework22"/>
+         <class name="Koel.LoginTests"/>
+         <class name="Koel.ProfileTests"/>
+         <class name="Koel.Homework18"/>
+         <class name="Koel.Homework16"/>
+         <class name="Koel.Homework17"/>
+         <class name="Koel.Homework19"/>
+         <class name="Koel.Homework20"/>
+         <class name="Koel.Homework21"/>
+         <class name="Koel.Homework22"/>
 
         </classes>
     </test>
