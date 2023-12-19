@@ -11,21 +11,33 @@ import java.time.Duration;
 
 public class ProfilePage extends BasePage {
 
+    //locators
+    By viewEditUserProfileBtnLocator = By.cssSelector("[class='avatar']");
+    By pageTitleLocator = By.xpath("//h1[contains(text(), 'Profile & Preferences')]");
+    By currentPasswordFieldLocator = By.cssSelector("[id='inputProfileCurrentPassword']");
+    By nameFieldLocator = By.cssSelector("[id='inputProfileName']");
+    By emailAddressFieldLocator = By.cssSelector("[id='inputProfileEmail']");
+    By newPasswordFieldLocator = By.cssSelector("[id='inputProfileNewPassword']");
+    By saveBtnLocator = By.cssSelector("[class='btn-submit']");
+    By successBannerLocator = By.xpath("//div[contains(text(), 'Profile updated')]");
+
     public ProfilePage (WebDriver givenDriver) {
 
         super(givenDriver);
 }
+
+
     public void goToProfilePage () {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement viewEditUserProfileBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[class='avatar']")));
+        WebElement viewEditUserProfileBtn = wait.until(ExpectedConditions.elementToBeClickable(viewEditUserProfileBtnLocator));
         viewEditUserProfileBtn.click();
-        WebElement pageTitle = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[contains(text(), 'Profile & Preferences')]")));
-        //Assert.assertTrue(pageTitle.isDisplayed());
+        WebElement pageTitle = wait.until(ExpectedConditions.presenceOfElementLocated(pageTitleLocator));
+        Assert.assertTrue(pageTitle.isDisplayed());
     }
 
     public void fillInCurrentPasswordField (String currentPassword) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement currentPasswordField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[id='inputProfileCurrentPassword']")));
+        WebElement currentPasswordField = wait.until(ExpectedConditions.elementToBeClickable(currentPasswordFieldLocator));
         currentPasswordField.click();
         currentPasswordField.clear();
         currentPasswordField.sendKeys(currentPassword);
@@ -33,7 +45,7 @@ public class ProfilePage extends BasePage {
 
     public void fillInNameField (String newUserName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement nameField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[id='inputProfileName']")));
+        WebElement nameField = wait.until(ExpectedConditions.elementToBeClickable(nameFieldLocator));
         nameField.click();
         nameField.clear();
         nameField.sendKeys(newUserName);
@@ -41,7 +53,7 @@ public class ProfilePage extends BasePage {
 
     public void fillInEmailAddress (String email) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement emailAddressField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[id='inputProfileEmail']")));
+        WebElement emailAddressField = wait.until(ExpectedConditions.elementToBeClickable(emailAddressFieldLocator));
         emailAddressField.click();
         emailAddressField.clear();
         emailAddressField.sendKeys(email);
@@ -49,7 +61,7 @@ public class ProfilePage extends BasePage {
 
     public void fillInNewPasswordField   (String newPassword) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement newPasswordField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[id='inputProfileNewPassword']")));
+        WebElement newPasswordField = wait.until(ExpectedConditions.elementToBeClickable(newPasswordFieldLocator));
         newPasswordField.click();
         newPasswordField.clear();
         newPasswordField.sendKeys(newPassword);
@@ -57,14 +69,14 @@ public class ProfilePage extends BasePage {
 
     public void clickSaveBtn () {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement saveBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[class='btn-submit']")));
+        WebElement saveBtn = wait.until(ExpectedConditions.elementToBeClickable(saveBtnLocator));
         saveBtn.click();
     }
 
     public void assertUserNameRenamed () {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement successBunner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Profile updated')]")));
-        Assert.assertTrue(successBunner.isDisplayed());
+        WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(successBannerLocator));
+        Assert.assertTrue(successBanner.isDisplayed());
 
     }
 }
