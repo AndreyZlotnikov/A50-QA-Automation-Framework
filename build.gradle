@@ -13,6 +13,7 @@ dependencies {
     testImplementation 'org.testng:testng:7.6.1'
     implementation 'org.seleniumhq.selenium:selenium-java:4.5.0'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.4.1'
+    implementation 'org.testng:testng:7.6.1'
 }
 
 test {
@@ -20,3 +21,5 @@ test {
         suites "src/test/resources/TestNG.xml"
     }
 }
+
+
