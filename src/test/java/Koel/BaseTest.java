@@ -63,7 +63,7 @@ public class BaseTest {
 
                 }
 
-        return driver;
+        return new ChromeDriver();
     }
 
     public WebDriver getDriver() {
