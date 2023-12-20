@@ -63,7 +63,12 @@ public class BaseTest {
 
                 }
 
-        return new ChromeDriver();
+        //return new ChromeDriver();
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--remote-allow-origins=*");
+        chromeOptions.addArguments("--disable-notifications");
+        return driver = new ChromeDriver(chromeOptions);
     }
 
     public WebDriver getDriver() {
