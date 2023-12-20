@@ -62,7 +62,6 @@ public class BaseTest {
                 return driver = new ChromeDriver(chromeOptions);
 
                 }
-
         //return new ChromeDriver();
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
