@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -13,10 +14,19 @@ import java.time.Duration;
 
 public class AllSongsPage extends BasePage {
 
-    //locators
-    By allSongsBtnLocator = By.cssSelector("a[class='songs']");
-    By allSongsHeadingLocator = By.xpath("//h1[contains(text(), 'All Songs')]");
-    By pauseBtnLocator = By.cssSelector("span[data-testid='pause-btn']");
+    //WebElements
+
+    @FindBy(css = "a[class='songs']")
+    WebElement allSongsBtn;
+    //By allSongsBtnLocator = By.cssSelector("a[class='songs']");
+
+    @FindBy(xpath = "//h1[contains(text(), 'All Songs')]")
+    WebElement allSongsHeading;
+    //By allSongsHeadingLocator = By.xpath("//h1[contains(text(), 'All Songs')]");
+
+    @FindBy(css = "span[data-testid='pause-btn']")
+    WebElement pauseBtn;
+    //By pauseBtnLocator = By.cssSelector("span[data-testid='pause-btn']");
 
     public AllSongsPage (WebDriver givenDriver) {
         super(givenDriver);
@@ -25,10 +35,10 @@ public class AllSongsPage extends BasePage {
 
     public void goToAllSongs () {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement allSongsBtn = wait.until(ExpectedConditions.elementToBeClickable(allSongsBtnLocator));
+        //WebElement allSongsBtn = wait.until(ExpectedConditions.elementToBeClickable(allSongsBtnLocator));
         //driver.findElement(By.cssSelector("a[class='songs']"));
         allSongsBtn.click();
-        WebElement allSongsHeading = wait.until(ExpectedConditions.visibilityOfElementLocated(allSongsHeadingLocator));
+        //WebElement allSongsHeading = wait.until(ExpectedConditions.visibilityOfElementLocated(allSongsHeadingLocator));
         //driver.findElement(By.xpath("//h1[contains(text(), 'All Songs')]"));
         Assert.assertTrue(allSongsHeading.isDisplayed());
     }
@@ -46,7 +56,7 @@ public class AllSongsPage extends BasePage {
         WebElement song = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[contains(text(), '" + title + "')]")));
         //driver.findElement(By.xpath("//td[contains(text(), '" + title + "')]"));
         actions.doubleClick(song).perform();
-        WebElement pauseBtn = wait.until(ExpectedConditions.presenceOfElementLocated(pauseBtnLocator));
+        //WebElement pauseBtn = wait.until(ExpectedConditions.presenceOfElementLocated(pauseBtnLocator));
         //driver.findElement(By.cssSelector("span[data-testid='pause-btn']"));
         actions.moveToElement(pauseBtn).perform();
         //Thread.sleep(3000);

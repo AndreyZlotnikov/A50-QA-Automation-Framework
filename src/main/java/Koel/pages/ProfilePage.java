@@ -3,6 +3,7 @@ package Koel.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -11,15 +12,39 @@ import java.time.Duration;
 
 public class ProfilePage extends BasePage {
 
-    //locators
-    By viewEditUserProfileBtnLocator = By.cssSelector("[class='avatar']");
-    By pageTitleLocator = By.xpath("//h1[contains(text(), 'Profile & Preferences')]");
-    By currentPasswordFieldLocator = By.cssSelector("[id='inputProfileCurrentPassword']");
-    By nameFieldLocator = By.cssSelector("[id='inputProfileName']");
-    By emailAddressFieldLocator = By.cssSelector("[id='inputProfileEmail']");
-    By newPasswordFieldLocator = By.cssSelector("[id='inputProfileNewPassword']");
-    By saveBtnLocator = By.cssSelector("[class='btn-submit']");
-    By successBannerLocator = By.xpath("//div[contains(text(), 'Profile updated')]");
+    //WebElements
+
+    @FindBy(css = "[class='avatar']")
+    WebElement viewEditUserProfileBtn;
+    //By viewEditUserProfileBtnLocator = By.cssSelector("[class='avatar']");
+
+    @FindBy(xpath = "//h1[contains(text(), 'Profile & Preferences')]")
+    WebElement pageTitle;
+    //By pageTitleLocator = By.xpath("//h1[contains(text(), 'Profile & Preferences')]");
+
+    @FindBy(css = "[id='inputProfileCurrentPassword']")
+    WebElement currentPasswordField;
+    //By currentPasswordFieldLocator = By.cssSelector("[id='inputProfileCurrentPassword']");
+
+    @FindBy(css = "[id='inputProfileName']")
+    WebElement nameField;
+    //By nameFieldLocator = By.cssSelector("[id='inputProfileName']");
+
+    @FindBy(css = "[id='inputProfileEmail']")
+    WebElement emailAddressField;
+    //By emailAddressFieldLocator = By.cssSelector("[id='inputProfileEmail']");
+
+    @FindBy(css = "[id='inputProfileNewPassword']")
+    WebElement newPasswordField;
+    //By newPasswordFieldLocator = By.cssSelector("[id='inputProfileNewPassword']");
+
+    @FindBy(css = "[class='btn-submit']")
+    WebElement saveBtn;
+    //By saveBtnLocator = By.cssSelector("[class='btn-submit']");
+
+    @FindBy(xpath = "//div[contains(text(), 'Profile updated')]")
+    WebElement successBanner;
+    //By successBannerLocator = By.xpath("//div[contains(text(), 'Profile updated')]");
 
     public ProfilePage (WebDriver givenDriver) {
 
@@ -29,15 +54,17 @@ public class ProfilePage extends BasePage {
 
     public void goToProfilePage () {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement viewEditUserProfileBtn = wait.until(ExpectedConditions.elementToBeClickable(viewEditUserProfileBtnLocator));
+        //ebElement viewEditUserProfileBtn = wait.until(ExpectedConditions.elementToBeClickable(viewEditUserProfileBtnLocator));
+        wait.until(ExpectedConditions.elementToBeClickable(viewEditUserProfileBtn));
         viewEditUserProfileBtn.click();
-        WebElement pageTitle = wait.until(ExpectedConditions.presenceOfElementLocated(pageTitleLocator));
+        //WebElement pageTitle = wait.until(ExpectedConditions.presenceOfElementLocated(pageTitleLocator));
+        wait.until(ExpectedConditions.visibilityOf(pageTitle));
         Assert.assertTrue(pageTitle.isDisplayed());
     }
 
     public void fillInCurrentPasswordField (String currentPassword) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement currentPasswordField = wait.until(ExpectedConditions.elementToBeClickable(currentPasswordFieldLocator));
+        //WebElement currentPasswordField = wait.until(ExpectedConditions.elementToBeClickable(currentPasswordFieldLocator));
         currentPasswordField.click();
         currentPasswordField.clear();
         currentPasswordField.sendKeys(currentPassword);
@@ -45,7 +72,7 @@ public class ProfilePage extends BasePage {
 
     public void fillInNameField (String newUserName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement nameField = wait.until(ExpectedConditions.elementToBeClickable(nameFieldLocator));
+        //WebElement nameField = wait.until(ExpectedConditions.elementToBeClickable(nameFieldLocator));
         nameField.click();
         nameField.clear();
         nameField.sendKeys(newUserName);
@@ -53,7 +80,7 @@ public class ProfilePage extends BasePage {
 
     public void fillInEmailAddress (String email) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement emailAddressField = wait.until(ExpectedConditions.elementToBeClickable(emailAddressFieldLocator));
+        //WebElement emailAddressField = wait.until(ExpectedConditions.elementToBeClickable(emailAddressFieldLocator));
         emailAddressField.click();
         emailAddressField.clear();
         emailAddressField.sendKeys(email);
@@ -61,7 +88,7 @@ public class ProfilePage extends BasePage {
 
     public void fillInNewPasswordField   (String newPassword) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement newPasswordField = wait.until(ExpectedConditions.elementToBeClickable(newPasswordFieldLocator));
+        //WebElement newPasswordField = wait.until(ExpectedConditions.elementToBeClickable(newPasswordFieldLocator));
         newPasswordField.click();
         newPasswordField.clear();
         newPasswordField.sendKeys(newPassword);
@@ -69,13 +96,14 @@ public class ProfilePage extends BasePage {
 
     public void clickSaveBtn () {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement saveBtn = wait.until(ExpectedConditions.elementToBeClickable(saveBtnLocator));
+        //WebElement saveBtn = wait.until(ExpectedConditions.elementToBeClickable(saveBtnLocator));
         saveBtn.click();
     }
 
     public void assertUserNameRenamed () {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(successBannerLocator));
+        //WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(successBannerLocator));
+        wait.until(ExpectedConditions.visibilityOf(successBanner));
         Assert.assertTrue(successBanner.isDisplayed());
 
     }
