@@ -78,15 +78,17 @@ public class PlaylistsPage extends BasePage {
         actions.contextClick(playlist).perform();
         WebElement editBtn = wait.until(ExpectedConditions.elementToBeClickable(editBtnLocator));
         editBtn.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(enterPlaylistNameFieldLocator));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(enterPlaylistNameFieldLocator));
         WebElement enterPlaylistNameField = driver.findElement(enterPlaylistNameFieldLocator);
         actions.moveToElement(enterPlaylistNameField)
-                .doubleClick()
-                .sendKeys(Keys.DELETE)
-                .sendKeys(newPlaylistName)
-                .sendKeys(Keys.ENTER)
-                .build().perform();
+               .doubleClick().perform();
+        actions.moveToElement(enterPlaylistNameField)
+               .sendKeys(Keys.DELETE)
+               .sendKeys(newPlaylistName)
+               .sendKeys(Keys.ENTER)
+               .build().perform();
         WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Updated playlist')]")));
         Assert.assertTrue(successBanner.isDisplayed());
     }
+
 }
