@@ -110,8 +110,8 @@ public class PlaylistsPage extends BasePage {
         actions.contextClick(playlist).perform();
         //WebElement editBtn = wait.until(ExpectedConditions.elementToBeClickable(editBtnLocator));
         editBtn.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(enterPlaylistNameFieldLocator));
-        WebElement enterPlaylistNameField = driver.findElement(enterPlaylistNameFieldLocator);
+        wait.until(ExpectedConditions.visibilityOf(enterPlaylistNameField));
+        //WebElement enterPlaylistNameField = driver.findElement(enterPlaylistNameFieldLocator);
         //wait.until(ExpectedConditions.presenceOfElementLocated(enterPlaylistNameFieldLocator));
         //WebElement enterPlaylistNameField = driver.findElement(enterPlaylistNameFieldLocator);
         actions.moveToElement(enterPlaylistNameField)
