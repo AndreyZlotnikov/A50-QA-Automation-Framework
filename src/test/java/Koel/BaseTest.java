@@ -23,12 +23,12 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    public WebDriver driver = null;
-    public String url = null;
+    protected WebDriver driver;
+    protected String url ="https://qa.koel.app/";
 
-    public WebDriverWait wait = null;
+    //public WebDriverWait wait = null;
 
-    public Actions actions = null;
+    //public Actions actions = null;
 
 
 

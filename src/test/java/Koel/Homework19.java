@@ -10,8 +10,8 @@ public class Homework19 extends BaseTest {
 
     @Test
     public void deletePlaylist () throws InterruptedException {
-        LoginPage loginPage = new LoginPage(driver);
-        PlaylistsPage playlistsPage = new PlaylistsPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        PlaylistsPage playlistsPage = new PlaylistsPage(getDriver());
 
         loginPage.logIn("demo@class.com", "te$t$tudent");
         //Thread.sleep(3000);
