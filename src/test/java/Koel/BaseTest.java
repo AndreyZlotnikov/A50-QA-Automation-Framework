@@ -33,7 +33,7 @@ public class BaseTest {
 
 
 
-    @BeforeMethod
+    @BeforeMethod()
     @Parameters({"BaseURL"})
     public void setupDriver(String BaseURL) throws MalformedURLException {
         driver = pickBrowser(System.getProperty("browser"));
