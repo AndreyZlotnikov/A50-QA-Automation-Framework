@@ -96,7 +96,7 @@ public class PlaylistsPage extends BasePage {
         WebElement playlist = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), '" + playlistName + "')]")));
         playlist.click();
         //WebElement deletePlaylistBtn = wait.until(ExpectedConditions.elementToBeClickable(deletePlaylistBtnLocator));
-        wait.until(ExpectedConditions.visibilityOf(deletePlaylistBtn));
+        wait.until(ExpectedConditions.elementToBeClickable(deletePlaylistBtn));
         deletePlaylistBtn.click();
         wait.until(ExpectedConditions.visibilityOf(successBanner));
         WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Deleted playlist')]")));

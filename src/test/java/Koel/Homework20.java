@@ -11,9 +11,9 @@ public class Homework20 extends BaseTest {
 
     @Test
     public void addSongToPlaylist() {
-        LoginPage loginPage = new LoginPage(driver);
-        PlaylistsPage playlistsPage = new PlaylistsPage(driver);
-        AllSongsPage allSongsPage = new AllSongsPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        PlaylistsPage playlistsPage = new PlaylistsPage(getDriver());
+        AllSongsPage allSongsPage = new AllSongsPage(getDriver());
 
         loginPage.logIn("demo@class.com", "te$t$tudent");
         playlistsPage.createPlaylist("Playlist25");
@@ -25,8 +25,8 @@ public class Homework20 extends BaseTest {
 
     @Test
     public void playSong() {
-        LoginPage loginPage = new LoginPage(driver);
-        AllSongsPage allSongsPage = new AllSongsPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        AllSongsPage allSongsPage = new AllSongsPage(getDriver());
 
         loginPage.logIn("demo@class.com", "te$t$tudent");
         allSongsPage.goToAllSongs();
@@ -36,8 +36,8 @@ public class Homework20 extends BaseTest {
 
     @Test
     public void deletePlaylist () {
-        LoginPage loginPage = new LoginPage(driver);
-        PlaylistsPage playlistsPage = new PlaylistsPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        PlaylistsPage playlistsPage = new PlaylistsPage(getDriver());
 
 
         loginPage.logIn("demo@class.com", "te$t$tudent");

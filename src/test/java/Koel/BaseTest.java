@@ -9,29 +9,33 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.time.Duration;
 
 public class BaseTest {
 
-    public WebDriver driver = null;
-    public String url = null;
+    protected WebDriver driver;
+    protected String url ="https://qa.koel.app/";
 
-    public WebDriverWait wait = null;
+    //public WebDriverWait wait = null;
 
-    public Actions actions = null;
-
-
+    //public Actions actions = null;
 
 
-    @BeforeMethod
+
+
+    @BeforeMethod()
     @Parameters({"BaseURL"})
-    public void setupDriver(String BaseURL) {
+    public void setupDriver(String BaseURL) throws MalformedURLException {
         driver = pickBrowser(System.getProperty("browser"));
         //ChromeOptions options = new ChromeOptions();
         //options.addArguments("--remote-allow-origins=*");
@@ -45,7 +49,9 @@ public class BaseTest {
         driver.get(url); //open page
     }
 
-    public WebDriver pickBrowser(String browser) {
+    public WebDriver pickBrowser(String browser) throws MalformedURLException {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        String gridURL = "http://192.168.1.117:4444";
         switch (browser){
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
@@ -63,8 +69,17 @@ public class BaseTest {
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 chromeOptions.addArguments("--disable-notifications");
                 return driver = new ChromeDriver(chromeOptions);
-
+            case "grid-chrome":
+                capabilities.setCapability("browser", "chrome");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);
+            case "grid-edge":
+                capabilities.setCapability("browser", "edge");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);
+            case "grid-firefox":
+                capabilities.setCapability("browser", "firefox");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);
                 }
+
         //return new ChromeDriver();
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();

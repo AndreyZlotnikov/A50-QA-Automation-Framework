@@ -10,9 +10,9 @@ public class Homework17 extends BaseTest {
 
     @Test
     public void addSongToPlaylist() {
-        LoginPage loginPage = new LoginPage(driver);
-        PlaylistsPage playlistsPage = new PlaylistsPage(driver);
-        AllSongsPage allSongsPage = new AllSongsPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        PlaylistsPage playlistsPage = new PlaylistsPage(getDriver());
+        AllSongsPage allSongsPage = new AllSongsPage(getDriver());
 
         loginPage.logIn("demo@class.com", "te$t$tudent");
         playlistsPage.createPlaylist("Playlist25");
