@@ -45,7 +45,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        url = BaseURL;
+        //url = BaseURL;
         driver.get(url); //open page
     }
 
