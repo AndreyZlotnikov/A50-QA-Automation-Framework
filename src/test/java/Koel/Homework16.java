@@ -16,22 +16,22 @@ public class Homework16 extends BaseTest {
 
     @Test
     public void registrationNavigation() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*"); // resolve issue with web socket error
-        WebDriver driver = new ChromeDriver(options);
+        //ChromeOptions options = new ChromeOptions();
+        //options.addArguments("--remote-allow-origins=*"); // resolve issue with web socket error
+        //WebDriver driver = new ChromeDriver(options);
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         String url = "https://qa.koel.app/";
-        driver.get(url); //open page
+        getDriver().get(url); //open page
 
-        WebElement registrationBtn = driver.findElement(By.cssSelector("[href='registration']"));
+        WebElement registrationBtn = getDriver().findElement(By.cssSelector("[href='registration']"));
         registrationBtn.click();
 
 
-        WebElement submitBtn = driver.findElement(By.cssSelector("[id='button']"));
+        WebElement submitBtn = getDriver().findElement(By.cssSelector("[id='button']"));
 
         Assert.assertTrue(submitBtn.isDisplayed());
-        driver.quit();
+        getDriver().quit();
     }
 }

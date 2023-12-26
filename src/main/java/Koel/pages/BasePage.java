@@ -21,7 +21,7 @@ import static java.lang.Thread.sleep;
 
 public class BasePage {
 
-    public WebDriver driver = null;
+    public WebDriver driver;
 
 
     public BasePage(WebDriver givenDriver) {
