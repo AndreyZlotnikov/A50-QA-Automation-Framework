@@ -10,8 +10,8 @@ public class ProfileTests extends BaseTest {
 
     @Test
     public void renameUserName() {
-        LoginPage loginPage = new LoginPage(driver);
-        ProfilePage profilePage = new ProfilePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        ProfilePage profilePage = new ProfilePage(getDriver());
 
         loginPage.logIn("andrey.zlotnikov@testpro.io", "Man07hat01tan26!");
         profilePage.goToProfilePage();

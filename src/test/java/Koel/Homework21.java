@@ -10,8 +10,8 @@ public class Homework21 extends BaseTest {
 
     @Test
     public void renamePlaylist() {
-        LoginPage loginPage = new LoginPage(driver);
-        PlaylistsPage playlistsPage = new PlaylistsPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        PlaylistsPage playlistsPage = new PlaylistsPage(getDriver());
 
 
         loginPage.logIn("demo@class.com", "te$t$tudent");

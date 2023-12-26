@@ -9,7 +9,7 @@ public class Homework19 extends BaseTest {
 
 
     @Test
-    public void deletePlaylist () throws InterruptedException {
+    public void deletePlaylist () {
         LoginPage loginPage = new LoginPage(getDriver());
         PlaylistsPage playlistsPage = new PlaylistsPage(getDriver());
 
