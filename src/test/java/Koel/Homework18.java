@@ -9,7 +9,7 @@ public class Homework18 extends BaseTest {
 
 
     @Test
-    public void playSong() throws InterruptedException {
+    public void playSong() {
         LoginPage loginPage = new LoginPage(getDriver());
         AllSongsPage allSongsPage = new AllSongsPage(getDriver());
 
