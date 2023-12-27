@@ -58,9 +58,11 @@ public class BaseTest {
         switch (browser){
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.addArguments("--disable-notifications");
-                return driver = new FirefoxDriver();
+                //FirefoxOptions firefoxOptions = new FirefoxOptions();
+                //firefoxOptions.addArguments("--disable-notifications");
+                FirefoxOptions fireFoxOptions = new FirefoxOptions();
+                fireFoxOptions.setCapability("dom.webnotifications.enabled", false);
+                return driver = new FirefoxDriver(fireFoxOptions);
             case "edge":
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions();
