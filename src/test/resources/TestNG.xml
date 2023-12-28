@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestNG" parallel="true" thread-count="2">
-    <parameter name="BaseURL" value="https://qa.koel.app/"></parameter>
+<suite name="TestNG" thread-count="2" parallel="false">
+    <!--<parameter name="BaseURL" value="https://qa.koel.app/"></parameter>-->
     <test name="Example Test" preserve-order="false">
         <classes>
-            <class name="Koel.LoginTests"/>
+            <class name="stepDefinition.CucumberRunner"></class>
+        <!--    <class name="Koel.LoginTests"/>
             <class name="Koel.ProfileTests"/>
             <class name="Koel.Homework18"/>
             <class name="Koel.Homework16"/>
@@ -13,7 +14,7 @@
             <class name="Koel.Homework19"/>
             <class name="Koel.Homework20"/>
             <class name="Koel.Homework21"/>
-            <class name="Koel.Homework22"/>
+            <class name="Koel.Homework22"/>-->
         </classes>
     </test>
 </suite>

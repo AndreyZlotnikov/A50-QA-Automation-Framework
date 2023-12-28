@@ -19,7 +19,7 @@ public class LoginStepDefinition {
     protected String url = "https://qa.koel.app/";
     private WebDriver driver;
 
-    @Given("I open the browser")
+    @Before
     public void setupDriver() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -27,7 +27,7 @@ public class LoginStepDefinition {
         driver = new ChromeDriver(options);
 
     }
-    @And("I open Login page")
+    @Given("I open Login page")
     public void iOpenLoginPage() {
         driver.get(url);
     }
@@ -46,7 +46,7 @@ public class LoginStepDefinition {
         LoginPage loginPage = new LoginPage(getDriver());
         //WebElement emailField = wait.until(ExpectedConditions.elementToBeClickable(emailFieldLocator));
         //driver.findElement(By.cssSelector("input[type='email']"));
-        loginPage.logIn("demo@class.com", "te$t$tudent");
+        loginPage.logIn(email, password);
         //loginPage.emailField.click();
         //emailField.clear();
        // emailField.sendKeys(email);
@@ -64,6 +64,7 @@ public class LoginStepDefinition {
 
     @Then("I am logged in")
     public void iAmLoggedIn() {
-
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.isLogOutBtnDisplayed();
     }
 }
