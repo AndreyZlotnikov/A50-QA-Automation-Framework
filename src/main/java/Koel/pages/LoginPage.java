@@ -1,11 +1,13 @@
 package Koel.pages;
 
+import io.cucumber.java.an.E;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -23,6 +25,9 @@ public class LoginPage extends BasePage {
     @FindBy (css = "button[type='submit']")
     WebElement logInBtn;
     //By loginBtnLocator = By.cssSelector("button[type='submit']");
+
+    @FindBy (css = "[class='logout control']")
+    WebElement logOutBtn;
 
     public LoginPage (WebDriver givenDriver) {
         super(givenDriver);
@@ -47,5 +52,11 @@ public class LoginPage extends BasePage {
         //driver.findElement(By.cssSelector("button[type='submit']"));
         logInBtn.click();
 
+    }
+
+    public void isLogOutBtnDisplayed (){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(logOutBtn));
+        Assert.assertTrue(logOutBtn.isDisplayed());
     }
 }
